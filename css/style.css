@@ -1,0 +1,360 @@
+html,
+body {
+  --font-crimson-pro: "Crimson Pro", serif;
+  --font-lora: "Lora", serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --white: #fff;
+  --black: #181719;
+  --gray: #a9a9a9;
+  --gray3: #828282;
+
+  height: 100%;
+}
+
+body {
+  color: var(--white);
+  background: var(--black);
+}
+
+/* common
+ --------------------------------------- */
+
+.container {
+  max-width: 1280px;
+  padding: 0 4%;
+  margin: 0 auto;
+}
+
+a.current {
+  font-weight: 700;
+}
+
+a.current::after {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: "";
+  background: var(--white);
+}
+
+/* header
+ --------------------------------------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 42px;
+}
+
+.header-logo {
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 102px;
+  height: 32px;
+  border: 1px solid var(--white);
+}
+
+.header-logo__title {
+  font-family: var(--font-crimson-pro);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.header-nav {
+  margin-left: 40px;
+}
+
+.header-nav__list {
+  display: flex;
+  gap: 86px;
+  align-items: center;
+  height: 100%;
+}
+
+.header-nav__item {
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.header-nav__link {
+  position: relative;
+}
+
+.header-nav__link:not(.current)::after {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: "";
+  background: var(--white);
+  transition: transform 0.3s;
+  transform: scale(0, 1);
+  transform-origin: right top;
+}
+
+.header-nav__link:hover::after {
+  transform: scale(1, 1);
+  transform-origin: left top;
+}
+
+.header-nav__menu-state {
+  position: absolute;
+  left: -999vw;
+}
+
+.header-nav__menu-button {
+  display: none;
+}
+
+.header-nav__drawer {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+  }
+
+  .header-nav__menu {
+    width: 38px;
+    height: 19px;
+  }
+
+  .header-nav__menu-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .header-nav__menu-bar,
+  .header-nav__menu-bar::before,
+  .header-nav__menu-bar::after {
+    position: absolute;
+    z-index: 100;
+    width: 28.5px;
+    height: 2px;
+    content: "";
+    background: #f2f2f2;
+    transition: 0.3s;
+  }
+
+  .header-nav__menu-bar::before {
+    top: 8px;
+  }
+
+  .header-nav__menu-bar::after {
+    bottom: 8px;
+  }
+
+  .header-nav__menu-state:checked ~ .header-nav__menu-button span {
+    background-color: rgb(255 255 255 / 0%);
+  }
+
+  .header-nav__menu-state:checked ~ .header-nav__menu-button span::before {
+    top: 0;
+    height: 3px;
+    transform: rotate(45deg);
+  }
+
+  .header-nav__menu-state:checked ~ .header-nav__menu-button span::after {
+    bottom: 0;
+    height: 3px;
+    transform: rotate(-45deg);
+  }
+
+  .header-nav__drawer {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    transition: 0.3s;
+  }
+
+  .header-nav__drawer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-nav__drawer-item {
+    position: relative;
+    font-family: var(--font-montserrat);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+  }
+
+  .header-nav__menu-state:checked ~ .header-nav__drawer {
+    left: 0;
+  }
+}
+
+/* main
+ --------------------------------------- */
+
+.main {
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+
+.main-contents {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  column-gap: 100px;
+}
+
+.main-contents__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-contents__title {
+  font-family: var(--font-lora);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 61px;
+}
+
+.main-contents__description {
+  margin-top: 40px;
+  font-family: var(--font-montserrat);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29px;
+}
+
+.main-contents__link {
+  margin-top: 48px;
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.main-contents__img {
+  width: 100%;
+  height: auto;
+}
+
+.main-contents__card {
+  position: relative;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-width: 206px;
+  max-width: 55%;
+  padding: 16px 26px 23px;
+  margin: 0 5% 0 auto;
+  background: var(--black);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+.main-contents__card-header {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+
+.main-contents__card-img {
+  border-radius: 37px;
+}
+
+.main-contents__card-name {
+  font-family: var(--font-montserrat);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.main-contents__card-description {
+  font-family: var(--font-montserrat);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  color: var(--gray3);
+}
+
+.main-contents__card-contents {
+  font-family: var(--font-lora);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 31px;
+}
+
+@media (max-width: 768px) {
+  .main-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+  }
+
+  .main-contents__title {
+    font-size: 36px;
+  }
+
+  .main-contents__description {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+
+  .main-contents__link {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+
+  .main-contents__card {
+    min-width: 206px;
+    max-width: 85%;
+  }
+}
+
+/* footer
+ --------------------------------------- */
+
+.footer {
+  position: sticky;
+  top: 100vh;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  text-align: center;
+}
+
+.footer-signature {
+  font-family: var(--font-montserrat);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+  color: var(--gray);
+}
